@@ -145,12 +145,31 @@ public:
         output << "Descuento aplicado: " << cliente.getDescuento() << "%" << endl;
         return output;
     }
-};
+
+    friend istream &operator>>(istream &input, Cliente &cliente){
+        cout << "Nombre: ";
+        input >> cliente.nombre;
+        cout << "Apellido: ";
+        input >> cliente.apellido;
+        cout << "Tipo de documento (c.c, t.i, c.i): ";
+        input >> cliente.tipo_identificacion;
+        cout << "Numero de documento: ";
+        input >> cliente.documento;
+        cout << "Direccion";
+        input >> cliente.direccion;
+        cout << "Tipo de suscripcion (Personal, Grupal, Empreasarial: ";
+        input >> cliente.tipo_suscripcion;
+        cout << "Descuento aplicado: ";
+        input >> cliente.descuento;
+
+        return input;
+    }
+
+    };
 
 int main() {
     Cliente cliente[2];
-    string nNombre, nApellido, nId, nDireccion, nSuscripcion;
-    int nDocumento, nDescuento;
+
     int op, op1, i=0;
     bool rep = true;
     do {
@@ -187,13 +206,13 @@ int main() {
 
                     case 1:
                         while(i<3){
-                            cout << "Nombre: ";
-                            cin >> nNombre;
-                            cout << "Apellido: ";
-                            cin >> nApellido;
+                            cin >> cliente[i];
+                            i++;
+                            break;
                         }
+                        break;
                 }
-                break;
+
 
             case 3:
                 rep = false;
