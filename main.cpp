@@ -273,6 +273,7 @@ public:
     }
     float calcularSalario()
     {
+        return 0;
     }
     friend ostream &operator<<(ostream &output, Empleado &empleado)
     {
@@ -288,6 +289,7 @@ public:
         output << "9. Horas Extra Nocturnas" << empleado.getHorasExtraN() << endl;
         output << "10. Horas Extra Dominicales Diurnas" << empleado.getHorasExtraDomD() << endl;
         output << "11. Horas Extra Dominicales Nocturnas" << empleado.getHorasExtraDomN() << endl;
+        return output;
     }
 };
 
@@ -295,49 +297,32 @@ int main()
 {
     Cliente cliente[2];
 
-    int op, op1, i = 0;
-    bool rep = true;
+    int op, i;
+    bool rep, rep2;
+    rep = rep2 = true;
+    i = op = 0;
     do
     {
-        cout << "################################################"
-                "###   Sistema de planificacion de recursos   ###"
+        op = 0;
+        cout << "################################################\n"
+                "###   Sistema de planificacion de recursos   ###\n"
                 "################################################\n \n"
                 "Menu: \n"
                 "1. Clientes \n"
                 "2. Empleados \n"
                 "3. Salir \n \n"
-                "Que desea realizar? "
-             << endl;
-        cout << ">>  ";
+                "Que desea realizar? \n"
+                ">>  ";
         cin >> op;
-
-        switch (op)
+        do
         {
 
-        case 1:
-
-            cout << "################################################"
-                    "###   Sistema de planificacion de recursos   ###"
-                    "################################################\n \n"
-                    "Gestion de clientes \n"
-                    "Menu: \n"
-                    "1. Crear clientes \n"
-                    "2. Modificar clientes \n"
-                    "3. Ver clientes \n"
-                    "4. Generar facturas \n"
-                    "5. Regresar \n \n"
-                    "Que desea realizar? "
-                 << endl;
-            cout << ">>  ";
-            cin >> op1;
-
-            switch (op1)
+            switch (op)
             {
 
             case 1:
-
-                cout << "################################################"
-                        "###   Sistema de planificacion de recursos   ###"
+                cout << "################################################\n"
+                        "###   Sistema de planificacion de recursos   ###\n"
                         "################################################\n \n"
                         "Gestion de clientes \n"
                         "Menu: \n"
@@ -346,15 +331,15 @@ int main()
                         "3. Ver clientes \n"
                         "4. Generar facturas \n"
                         "5. Regresar \n \n"
-                        "Que desea realizar? "
-                     << endl;
-                cout << ">>  ";
-                cin >> op1;
+                        "Que desea realizar? \n"
+                        ">>  ";
+                cin >> op;
 
-                switch (op1)
+                switch (op)
                 {
 
                 case 1:
+
                     while (i < 3)
                     {
                         cin >> cliente[i];
@@ -362,12 +347,59 @@ int main()
                         break;
                     }
                     break;
-                }
 
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    rep2 = false;
+                    break;
+                default:
+                    break;
+                }
+                break;
+            case 2:
+                cout << "################################################\n"
+                        "###   Sistema de planificacion de recursos   ###\n"
+                        "################################################\n \n"
+                        "Gestion de Empleados \n"
+                        "Menu: \n"
+                        "1. Crear empleados \n"
+                        "2. Modificar empleados \n"
+                        "3. Ver empleados \n"
+                        "4. Generar recibos de nómina \n"
+                        "5. Regresar \n \n"
+                        "¿Que desea realizar? \n"
+                        ">> ";
+                cin >> op;
+                switch (op)
+                {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    rep2 = false;
+                    break;
+                default:
+                    break;
+                }
+                break;
             case 3:
+                rep2 = false;
                 rep = false;
+                break;
+            default:
+                break;
             }
-        }
-    } while (rep = false);
+        } while (rep2 == true);
+    } while (rep == true);
     return 0;
 }
