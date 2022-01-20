@@ -25,22 +25,22 @@ public:
         this->documento = documento;
     }
 
-    string getNombre() const
+    string getNombre()
     {
         return nombre;
     }
 
-    string getApellido() const
+    string getApellido()
     {
         return apellido;
     }
 
-    string getTipo_identificacion() const
+    string getTipo_identificacion()
     {
         return tipo_identificacion;
     }
 
-    int getDocumento() const
+    int getDocumento()
     {
         return documento;
     }
@@ -65,7 +65,7 @@ public:
         this->documento = documento;
     }
 
-    friend ostream &operator<<(ostream &output, const Persona &persona)
+    friend ostream &operator<<(ostream &output, Persona &persona)
     {
         output << "Nombre: " << persona.getNombre() << endl;
         output << "Apellido: " << persona.getApellido() << endl;
@@ -99,17 +99,17 @@ public:
         this->descuento = descuento;
     }
 
-    string getDireccion() const
+    string getDireccion()
     {
         return direccion;
     }
 
-    string getTipo_suscripcion() const
+    string getTipo_suscripcion()
     {
         return tipo_suscripcion;
     }
 
-    int getDescuento() const
+    int getDescuento()
     {
         return descuento;
     }
@@ -157,7 +157,7 @@ public:
         return total;
     }
 
-    friend ostream &operator<<(ostream &output, const Cliente &cliente)
+    friend ostream &operator<<(ostream &output, Cliente &cliente)
     {
         output << "Nombre: " << cliente.getNombre() << " " << cliente.getApellido() << endl;
         output << "Documento tipo " << cliente.getTipo_identificacion() << ": " << cliente.getDocumento() << endl;
@@ -274,20 +274,20 @@ public:
     float calcularSalario()
     {
     }
-    friend ostream &operator<<(ostream &output, const Empleado &empleado)
+    friend ostream &operator<<(ostream &output, Empleado &empleado)
     {
 
-        output << "1. Nombre" << endl;
-        output << "2. Apellido" << endl;
-        output << "3. Tipo de Identificación" << endl;
-        output << "4. Documento" << endl;
-        output << "5. Tipo de Contrato" << endl;
-        output << "6. Salario" << endl;
-        output << "7. Horas Trabajadas" << endl;
-        output << "8. Horas Extra Diurnas" << endl;
-        output << "9. Horas Extra Nocturnas" << endl;
-        output << "10. Horas Extra Dominicales Diurnas" << endl;
-        output << "11. Horas Extra Dominicales Nocturnas" << endl;
+        output << "1. Nombre" << empleado.getNombre() << endl;
+        output << "2. Apellido" << empleado.getApellido() << endl;
+        output << "3. Tipo de Identificación" << empleado.getTipo_identificacion() << endl;
+        output << "4. Documento" << empleado.getDocumento() << endl;
+        output << "5. Tipo de Contrato" << empleado.getTipoContrato() << endl;
+        output << "6. Salario" << empleado.getSalario() << endl;
+        output << "7. Horas Trabajadas" << empleado.getHoraT() << endl;
+        output << "8. Horas Extra Diurnas" << empleado.getHorasExtraD() << endl;
+        output << "9. Horas Extra Nocturnas" << empleado.getHorasExtraN() << endl;
+        output << "10. Horas Extra Dominicales Diurnas" << empleado.getHorasExtraDomD() << endl;
+        output << "11. Horas Extra Dominicales Nocturnas" << empleado.getHorasExtraDomN() << endl;
     }
 };
 
