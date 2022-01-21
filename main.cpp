@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdio.h>
+#include <iomanip>
 
 using namespace std;
 
@@ -271,7 +271,7 @@ public:
     {
         this->horas_extra_dom_n = horas_extra_dom_n;
     }
-    void setHorasExtraDOmD(int horas_extra_dom_d)
+    void setHorasExtraDomD(int horas_extra_dom_d)
     {
         this->horas_extra_dom_d = horas_extra_dom_d;
     }
@@ -282,29 +282,59 @@ public:
     friend ostream &operator<<(ostream &output, Empleado &empleado)
     {
 
-        output << "1. Nombre" << empleado.getNombre() << endl;
-        output << "2. Apellido" << empleado.getApellido() << endl;
-        output << "3. Tipo de Identificación" << empleado.getTipo_identificacion() << endl;
-        output << "4. Documento" << empleado.getDocumento() << endl;
-        output << "5. Tipo de Contrato" << empleado.getTipoContrato() << endl;
-        output << "6. Salario" << empleado.getSalario() << endl;
-        output << "7. Horas Trabajadas" << empleado.getHoraT() << endl;
-        output << "8. Horas Extra Diurnas" << empleado.getHorasExtraD() << endl;
-        output << "9. Horas Extra Nocturnas" << empleado.getHorasExtraN() << endl;
-        output << "10. Horas Extra Dominicales Diurnas" << empleado.getHorasExtraDomD() << endl;
-        output << "11. Horas Extra Dominicales Nocturnas" << empleado.getHorasExtraDomN() << endl;
+        output << "1. Nombre: " << empleado.getNombre() << endl;
+        output << "2. Apellido: " << empleado.getApellido() << endl;
+        output << "3. Tipo de Identificación: " << empleado.getTipo_identificacion() << endl;
+        output << "4. Documento: " << empleado.getDocumento() << endl;
+        output << "5. Tipo de Contrato: " << empleado.getTipoContrato() << endl;
+        output << "6. Salario: " << empleado.getSalario() << endl;
+        output << "7. Horas Trabajadas: " << empleado.getHoraT() << endl;
+        output << "8. Horas Extra Diurnas: " << empleado.getHorasExtraD() << endl;
+        output << "9. Horas Extra Nocturnas: " << empleado.getHorasExtraN() << endl;
+        output << "10. Horas Extra Dominicales Diurnas: " << empleado.getHorasExtraDomD() << endl;
+        output << "11. Horas Extra Dominicales Nocturnas: " << empleado.getHorasExtraDomN() << endl
+               << endl;
         return output;
+    }
+
+    friend istream &operator>>(istream &input, Empleado &empleado)
+    {
+        cout << "Nombre: ";
+        input >> empleado.nombre;
+        cout << "Apellido: ";
+        input >> empleado.apellido;
+        cout << "Tipo de Identificación";
+        input >> empleado.tipo_identificacion;
+        cout << "Documento: ";
+        input >> empleado.documento;
+        cout << "Tipo Contrato: ";
+        input >> empleado.tipo_contrato;
+        cout << "Salario: ";
+        input >> empleado.salario;
+        cout << "Horas Trabajadas: ";
+        input >> empleado.hora_t;
+        cout << "Horas Extra Diurnas: ";
+        input >> empleado.horas_extra_d;
+        cout << "Horas Extra Nocturnas: ";
+        input >> empleado.horas_extra_n;
+        cout << "Horas Extra Dominicales Diurnas: ";
+        input >> empleado.horas_extra_dom_d;
+        cout << "Horas Extra Dominicales Nocturnas: ";
+        input >> empleado.horas_extra_dom_n;
+        return input;
     }
 };
 
 int main()
 {
     Cliente cliente[2];
+    Empleado empleado[2];
 
-    int op, i;
+    int op, opTemp, i_empleado, i_cliente, intModOp, n_desprendible;
     bool rep, rep2;
+    string modOp;
     rep = rep2 = true;
-    i = 0;
+    i_cliente = i_empleado = 0;
     do
     {
         cout << "################################################\n"
@@ -344,10 +374,10 @@ int main()
 
                 case 1:
 
-                    while (i < 3)
+                    while (i_cliente < 2)
                     {
-                        cin >> cliente[i];
-                        i++;
+                        cin >> cliente[i_cliente];
+                        i_cliente++;
                         break;
                     }
                     break;
@@ -404,12 +434,106 @@ int main()
                 switch (op)
                 {
                 case 1:
+                    while (i_empleado < 2)
+                    {
+                        cin >> empleado[i_empleado];
+                        i_empleado++;
+                        break;
+                    }
                     break;
                 case 2:
+                    for (int i = 0; i < 2; i++)
+                    {
+                        cout << i + 1 << "." << empleado[i].getNombre() << endl;
+                    }
+                    cout << ">> ";
+                    cin >> opTemp;
+                    opTemp -= 1;
+                    do
+                    {
+                        cout << empleado[opTemp];
+                        cout << "12. Regresar\n"
+                             << ">> ";
+                        cin >> op;
+                        switch (op)
+                        {
+                        case 1:
+                            cout << "Nuevo Nombre: ";
+                            cin >> modOp;
+                            empleado[opTemp].setNombre(modOp);
+                            break;
+                        case 2:
+                            cout << "Nuevo Apellido: ";
+                            cin >> modOp;
+                            empleado[opTemp].setApellido(modOp);
+                            break;
+                        case 3:
+                            cout << "Nuevo Tipo de Identificación: ";
+                            cin >> modOp;
+                            empleado[opTemp].setTipo_identificacion(modOp);
+                            break;
+                        case 4:
+                            cout << "Nuevo Número de Documento: ";
+                            cin >> intModOp;
+                            empleado[opTemp].setDocumento(intModOp);
+                            break;
+                        case 5:
+                            cout << "Nuevo Tipo de Contrato: ";
+                            cin >> modOp;
+                            empleado[opTemp].setTipoContrato(modOp);
+                            break;
+                        case 6:
+                            cout << "Nuevo Salario: ";
+                            cin >> intModOp;
+                            empleado[opTemp].setSalario(intModOp);
+                            break;
+                        case 7:
+                            cout << "Horas Trabajadas: ";
+                            cin >> intModOp;
+                            empleado[opTemp].setSalario(intModOp);
+                            break;
+                        case 8:
+                            cout << "Horas Extra Diurnas: ";
+                            cin >> intModOp;
+                            empleado[opTemp].setHorasExtraD(intModOp);
+                            break;
+                        case 9:
+                            cout << "Horas Extra Nocturnas: ";
+                            cin >> intModOp;
+                            empleado[opTemp].setHorasExtraN(intModOp);
+                            break;
+                        case 10:
+                            cout << "Horas Extra Dominicales Diurnas: ";
+                            cin >> intModOp;
+                            empleado[opTemp].setHorasExtraDomD(intModOp);
+                            break;
+                        case 11:
+                            cout << "Horas Extra Dominicales Nocturnas: ";
+                            cin >> intModOp;
+                            empleado[opTemp].setHorasExtraDomN(intModOp);
+                            break;
+                        case 12:
+                            rep = false;
+                            break;
+                        default:
+                            break;
+                        }
+                    } while (rep == true);
+                    rep = true;
                     break;
                 case 3:
+                    for (int i = 0; i < 2; i++)
+                    {
+                        cout << i + 1 << "." << empleado[i].getNombre() << endl;
+                    }
+                    cout << ">> ";
+                    cin >> op;
+                    cout << empleado[op - 1];
+                    system("read -p 'Presiona Enter... ' var");
                     break;
                 case 4:
+                    cout << "\t\tDESPRENDIBLE DE NÓMINA\n\n"
+                         << "Aunar Villavicencio\t\t DESPRENDIBLE\t" << n_desprendible;
                     break;
                 case 5:
                     rep2 = false;
