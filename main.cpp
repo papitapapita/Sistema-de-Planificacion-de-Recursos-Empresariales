@@ -300,10 +300,10 @@ int main()
 {
     Cliente cliente[2];
     string modOp;
-    int intmodOp, op,opTemp, i;
+    int intmodOp, op,opTemp, i_cliente;
     bool rep;
     rep = true;
-    i = 0;
+
     do
     {
         cout << "################################################\n"
@@ -343,10 +343,10 @@ int main()
 
                         case 1:
 
-                            while (i < 2)
+                            while (i_cliente < 2)
                             {
-                                cin >> cliente[i];
-                                i++;
+                                cin >> cliente[i_cliente];
+                                i_cliente++;
                                 break;
                             }
                             break;
@@ -466,42 +466,6 @@ int main()
                 rep = true;
                 break;
 
-            case 2:
-                do
-                {
-
-                    cout << "################################################\n"
-                            "###   Sistema de planificacion de recursos   ###\n"
-                            "################################################\n \n"
-                            "Gestion de Empleados \n"
-                            "Menu: \n"
-                            "1. Crear empleados \n"
-                            "2. Modificar empleados \n"
-                            "3. Ver empleados \n"
-                            "4. Generar recibos de nómina \n"
-                            "5. Regresar \n \n"
-                            "¿Que desea realizar? \n"
-                            ">> ";
-                    cin >> op;
-                    switch (op)
-                    {
-                        case 1:
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-                        case 5:
-                            rep = false;
-                            break;
-                        default:
-                            break;
-                    }
-                } while (rep == true);
-                rep = true;
-                break;
 
             case 3:
                 rep = false;
