@@ -179,7 +179,8 @@ public:
         cout << "Numero de documento: ";
         input >> cliente.documento;
         cout << "Direccion";
-        input >> cliente.direccion;
+        cin.ignore();
+        getline(input, cliente.direccion);
         cout << "Tipo de suscripcion (Personal, Grupal, Empreasarial: ";
         input >> cliente.tipo_suscripcion;
         cout << "Descuento aplicado: ";
