@@ -536,12 +536,13 @@ int main()
                          << "Aunar Villavicencio\t\t DESPRENDIBLE\t" << n_desprendible;
                     break;
                 case 5:
-                    rep2 = false;
+                    rep = false;
                     break;
                 default:
                     break;
                 }
-            } while (rep2 == true);
+            } while (rep == true);
+            rep = true;
             break;
 
         case 3:
