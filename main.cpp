@@ -132,26 +132,26 @@ public:
 
     float calcularPagosuscripcion()
     {
-        int aux;
+        float aux = 0;
         float total;
-        if (tipo_suscripcion == "personal" || tipo_suscripcion == "Personal")
+        if (tipo_suscripcion == "personal" || tipo_suscripcion == "Personal" || tipo_suscripcion == "PERSONAL")
         {
             total = aux = 10000;
-            aux %= descuento;
+            aux /= descuento;
             total -= aux;
         }
 
-        if (tipo_suscripcion == "grupal" || tipo_suscripcion == "Grupal")
+        if (tipo_suscripcion == "grupal" || tipo_suscripcion == "Grupal" || tipo_suscripcion == "GRUPAL")
         {
             total = aux = 15000;
-            aux %= descuento;
+            aux /= descuento;
             total -= aux;
         }
 
-        if (tipo_suscripcion == "empresarial" || tipo_suscripcion == "Empresarial")
+        if (tipo_suscripcion == "empresarial" || tipo_suscripcion == "Empresarial" || tipo_suscripcion == "EMPRESARIAL")
         {
-            total = aux = 25000;
-            aux %= descuento;
+            total = 25000;
+            aux = total * descuento / 100;
             total -= aux;
         }
 
@@ -176,7 +176,7 @@ public:
         input >> cliente.nombre;
         cout << "Apellido: ";
         input >> cliente.apellido;
-        cout << "Tipo de documento (c.c, t.i, c.i): ";
+        cout << "Tipo de documento (C.C, T.I, C.I): ";
         input >> cliente.tipo_identificacion;
         cout << "Numero de documento: ";
         input >> cliente.documento;
@@ -331,9 +331,9 @@ int main()
     Empleado empleado[2];
 
     int op, opTemp, i_empleado, i_cliente, intModOp, n_desprendible;
-    bool rep, rep2;
+    bool rep;
     string modOp;
-    rep = rep2 = true;
+    rep = true;
     i_cliente = i_empleado = 0;
     do
     {
@@ -387,31 +387,128 @@ int main()
                     {
                         cout << i + 1 << "." << cliente[i].getNombre() << "\n";
                     }
-                    cout << "Cual desea modificiar: ";
-                    cin >> op;
-                    cout << cliente[op - 1];
-                    cout << "Cual opcion va a modificar: ";
-                    cin >> op;
+                    cout << ">> ";
+                    cin >> opTemp;
+                    opTemp--;
+                    do
+                    {
+
+                        cout << cliente[opTemp];
+                        cout << "8. Regresar" << endl;
+                        cout << ">> ";
+                        cin >> op;
+                        switch (op)
+                        {
+
+                        case 1:
+                            cout << "Ingerese nuevo nombre: ";
+                            cin >> modOp;
+                            cliente[opTemp].setNombre(modOp);
+                            break;
+
+                        case 2:
+                            cout << "Ingerese nuevo apellido: ";
+                            cin >> modOp;
+                            cliente[opTemp].setApellido(modOp);
+                            break;
+
+                        case 3:
+                            cout << "Ingerese nuevo tipo de documento (C.C, C.I T.I): ";
+                            cin >> modOp;
+                            cliente[opTemp].setTipo_identificacion(modOp);
+                            break;
+
+                        case 4:
+                            cout << "Ingerese nuevo documento: ";
+                            cin >> intModOp;
+                            cliente[opTemp].setDocumento(intModOp);
+                            break;
+
+                        case 5:
+                            cout << "Ingerese nueva direccion: ";
+                            cin.ignore();
+                            getline(cin, modOp);
+                            cliente[opTemp].setDireccion(modOp);
+                            break;
+
+                        case 6:
+                            cout << "Ingerese nuevo tipo de suscripcion (Personal, Grupal, Empresarial: ";
+                            cin >> modOp;
+                            cliente[opTemp].setTipo_suscripcion(modOp);
+                            break;
+
+                        case 7:
+                            cout << "Ingerese nuevo descuento: ";
+                            cin >> intModOp;
+                            cliente[opTemp].setDescuento(intModOp);
+                            break;
+
+                        case 8:
+                            rep = false;
+                            break;
+
+                        default:
+                            break;
+                        }
+                    } while (rep == true);
+                    rep = true;
                     break;
+
                 case 3:
                     for (int i = 0; i < 2; i++)
                     {
                         cout << i + 1 << "." << cliente[i].getNombre() << "\n";
                     }
-                    cout << "Cual desea observar: ";
+                    cout << ">> ";
                     cin >> op;
                     cout << cliente[op - 1];
                     system("pause");
                     break;
                 case 4:
+                    for (int i = 0; i < 2; i++)
+                    {
+                        cout << i + 1 << "." << cliente[i].getNombre() << "\n";
+                    }
+                    cout << ">> ";
+                    cin >> op;
+                    cout << "Villavicencio                     Factrura  #00" << op << endl;
+                    cout << "Km via Acacias, anillo vial \n"
+                            "(8) 6823030 / Cel: 3103689660 \n"
+                            "-----------------------------------------------------\n\n"
+                            "FACTURA A \n"
+                         << cliente[op - 1].getNombre() << " " << cliente[op - 1].getApellido() << "\n"
+                         << cliente[op - 1].getTipo_identificacion() << ": " << cliente[op - 1].getDocumento()
+                         << "\n"
+                         << "Direccion: " << cliente[op - 1].getDireccion() << "\n \n \n"
+                         << "DESCRIPCION                     |  CANT |    VALOR\n"
+                            "Pago de suscripcion "
+                         << cliente[op - 1].getTipo_suscripcion()
+                         << "  |  1  |  $" << cliente[op - 1].calcularPagosuscripcion() << "COP"
+                         << "                                           $"
+                         << cliente[op - 1].calcularPagosuscripcion() << "COP \n\n\n"
+                         << "VALOR A PAGAR  $" << cliente[op - 1].calcularPagosuscripcion() << "COP\n\n\n"
+                         << "            GRACIAS POR TU COMPRA";
+
                     break;
                 case 5:
-                    rep2 = false;
+                    rep = false;
                     break;
                 default:
                     break;
                 }
-            } while (rep2 == true);
+                cout << "Cual desea observar: ";
+                cin >> op;
+                cout << cliente[op - 1];
+                system("pause");
+                break;
+            case 4:
+                break;
+            case 5:
+                rep = false;
+                break;
+            default:
+                break;
+            } while (rep == true);
             break;
 
         case 2:
@@ -547,9 +644,6 @@ int main()
 
         case 3:
             rep = false;
-            break;
-
-        default:
             break;
         }
     } while (rep == true);
