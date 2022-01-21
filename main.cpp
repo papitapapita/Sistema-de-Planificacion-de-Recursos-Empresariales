@@ -91,7 +91,7 @@ public:
 
     Cliente(string nombre, string apellido, string tipo_identificacion, int documento, string direccion,
             string tipo_suscripcion, int descuento)
-        : Persona(nombre, apellido, tipo_identificacion, documento)
+            : Persona(nombre, apellido, tipo_identificacion, documento)
     {
 
         this->direccion = direccion;
@@ -157,13 +157,14 @@ public:
         return total;
     }
 
-    friend ostream &operator<<(ostream &output, Cliente &cliente)
-    {
-        output << "Nombre: " << cliente.getNombre() << " " << cliente.getApellido() << endl;
-        output << "Documento tipo " << cliente.getTipo_identificacion() << ": " << cliente.getDocumento() << endl;
-        output << "Direccion: " << cliente.getDireccion() << endl;
-        output << "Tipo de suscripcion: " << cliente.getTipo_suscripcion() << endl;
-        output << "Descuento aplicado: " << cliente.getDescuento() << "%" << endl;
+    friend ostream &operator<<(ostream &output, Cliente &cliente){
+        output << "1. Nombre: " << cliente.getNombre() << endl;
+        output << "2. Apellido: " << cliente.getApellido() << endl;
+        output << "3. Documento tipo " << cliente.getTipo_identificacion() << endl;
+        output << "4. Numero de documento: " << cliente.getDocumento() << endl;
+        output << "5. Direccion: " << cliente.getDireccion() << endl;
+        output << "6. Tipo de suscripcion: " << cliente.getTipo_suscripcion() << endl;
+        output << "7. Descuento aplicado: " << cliente.getDescuento() << "%" << endl;
         return output;
     }
 
@@ -293,17 +294,14 @@ public:
     }
 };
 
-int main()
-{
+int main() {
     Cliente cliente[2];
 
     int op, i;
     bool rep, rep2;
     rep = rep2 = true;
-    i = op = 0;
-    do
-    {
-        op = 0;
+    i = 0;
+    do {
         cout << "################################################\n"
                 "###   Sistema de planificacion de recursos   ###\n"
                 "################################################\n \n"
@@ -314,92 +312,98 @@ int main()
                 "Que desea realizar? \n"
                 ">>  ";
         cin >> op;
-        do
-        {
 
-            switch (op)
-            {
+        switch (op) {
 
             case 1:
-                cout << "################################################\n"
-                        "###   Sistema de planificacion de recursos   ###\n"
-                        "################################################\n \n"
-                        "Gestion de clientes \n"
-                        "Menu: \n"
-                        "1. Crear clientes \n"
-                        "2. Modificar clientes \n"
-                        "3. Ver clientes \n"
-                        "4. Generar facturas \n"
-                        "5. Regresar \n \n"
-                        "Que desea realizar? \n"
-                        ">>  ";
-                cin >> op;
+                do {
 
-                switch (op)
-                {
+                    cout << "################################################"
+                            "###   Sistema de planificacion de recursos   ###"
+                            "################################################\n \n"
+                            "Gestion de clientes \n"
+                            "Menu: \n"
+                            "1. Crear clientes \n"
+                            "2. Modificar clientes \n"
+                            "3. Ver clientes \n"
+                            "4. Generar facturas \n"
+                            "5. Regresar \n \n"
+                            "Que desea realizar? " << endl;
+                    cout << ">>  ";
+                    cin >> op;
 
-                case 1:
+                    switch (op){
 
-                    while (i < 3)
-                    {
-                        cin >> cliente[i];
-                        i++;
-                        break;
+                        case 1:
+
+                            while (i < 3) {
+                                cin >> cliente[i];
+                                i++;
+                                break;
+                            }
+                            break;
+
+                        case 2:
+                            for (int i = 0; i < 2; i++)
+                            {
+                                cout << i + 1 << "." << cliente[i].getNombre() << "\n";
+                            }
+                            cout << "Cual desea modificiar: ";
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            rep2 = false;
+                            break;
+                        default:
+                            break;
                     }
-                    break;
+                } while (rep2== true);
+                break;
 
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    rep2 = false;
-                    break;
-                default:
-                    break;
-                }
-                break;
             case 2:
-                cout << "################################################\n"
-                        "###   Sistema de planificacion de recursos   ###\n"
-                        "################################################\n \n"
-                        "Gestion de Empleados \n"
-                        "Menu: \n"
-                        "1. Crear empleados \n"
-                        "2. Modificar empleados \n"
-                        "3. Ver empleados \n"
-                        "4. Generar recibos de nómina \n"
-                        "5. Regresar \n \n"
-                        "¿Que desea realizar? \n"
-                        ">> ";
-                cin >> op;
-                switch (op)
-                {
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    rep2 = false;
-                    break;
-                default:
-                    break;
-                }
+                do {
+
+                    cout << "################################################\n"
+                            "###   Sistema de planificacion de recursos   ###\n"
+                            "################################################\n \n"
+                            "Gestion de Empleados \n"
+                            "Menu: \n"
+                            "1. Crear empleados \n"
+                            "2. Modificar empleados \n"
+                            "3. Ver empleados \n"
+                            "4. Generar recibos de nómina \n"
+                            "5. Regresar \n \n"
+                            "¿Que desea realizar? \n"
+                            ">> ";
+                    cin >> op;
+                    switch (op) {
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            rep2 = false;
+                            break;
+                        default:
+                            break;
+                    }
+                } while (rep2== true);
                 break;
+
             case 3:
-                rep2 = false;
                 rep = false;
                 break;
+
             default:
                 break;
-            }
-        } while (rep2 == true);
-    } while (rep == true);
+        }
+    }while (rep == true);
     return 0;
 }
