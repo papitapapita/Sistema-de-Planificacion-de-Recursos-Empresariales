@@ -349,8 +349,20 @@ int main() {
                                 cout << i + 1 << "." << cliente[i].getNombre() << "\n";
                             }
                             cout << "Cual desea modificiar: ";
+                            cin >> op;
+                            cout << cliente[op-1];
+                            cout << "Cual opcion va a modificar: ";
+                            cin >> op;
                             break;
                         case 3:
+                            for (int i = 0; i < 2; i++)
+                            {
+                                cout << i + 1 << "." << cliente[i].getNombre() << "\n";
+                            }
+                            cout << "Cual desea observar: ";
+                            cin >> op;
+                            cout << cliente[op-1];
+                            system("pause");
                             break;
                         case 4:
                             break;
