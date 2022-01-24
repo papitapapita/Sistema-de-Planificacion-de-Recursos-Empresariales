@@ -82,7 +82,7 @@ public:
     }
     Cliente(string nombre, string apellido, string tipo_identificacion, int documento, string direccion,
             string tipo_suscripcion, int descuento)
-        : Persona(nombre, apellido, tipo_identificacion, documento)
+            : Persona(nombre, apellido, tipo_identificacion, documento)
     {
         this->direccion = direccion;
         this->tipo_suscripcion = tipo_suscripcion;
@@ -339,304 +339,316 @@ int main()
             switch (opPersona)
             {
 
-            case 1:
-
-                cout << "################################################\n"
-                        "###   Sistema de planificacion de recursos   ###\n"
-                        "################################################\n \n"
-                        "Gestion de clientes \n"
-                        "Menu: \n"
-                        "1. Crear clientes \n"
-                        "2. Modificar clientes \n"
-                        "3. Ver clientes \n"
-                        "4. Generar facturas \n"
-                        "5. Regresar \n \n"
-                        "Que desea realizar? \n"
-                        ">>  ";
-                cin >> op;
-
-                switch (op)
-                {
-
                 case 1:
 
-                    while (i_cliente < 2)
-                    {
-                        cin >> cliente[i_cliente];
-                        i_cliente++;
-                        break;
-                    }
-                    break;
+                    cout << "################################################\n"
+                            "###   Sistema de planificacion de recursos   ###\n"
+                            "################################################\n \n"
+                            "Gestion de clientes \n"
+                            "Menu: \n"
+                            "1. Crear clientes \n"
+                            "2. Modificar clientes \n"
+                            "3. Ver clientes \n"
+                            "4. Generar facturas \n"
+                            "5. Regresar \n \n"
+                            "Que desea realizar? \n"
+                            ">>  ";
+                    cin >> op;
 
-                case 2:
-                    for (int i = 0; i < 2; i++)
+                    switch (op)
                     {
-                        cout << i + 1 << "." << cliente[i].getNombre() << "\n";
-                    }
-                    cout << ">> ";
-                    cin >> opTemp;
-                    opTemp--;
-                    do
-                    {
-                        cout << cliente[opTemp];
-                        cout << "8. Regresar" << endl;
-                        cout << ">> ";
-                        cin >> op;
-                        switch (op)
-                        {
 
                         case 1:
-                            cout << "Ingerese nuevo nombre: ";
-                            cin >> modOp;
-                            cliente[opTemp].setNombre(modOp);
+
+                            while (i_cliente < 2)
+                            {
+                                cin >> cliente[i_cliente];
+                                i_cliente++;
+                                break;
+                            }
                             break;
 
                         case 2:
-                            cout << "Ingerese nuevo apellido: ";
-                            cin >> modOp;
-                            cliente[opTemp].setApellido(modOp);
+                            for (int i = 0; i < 2; i++)
+                            {
+                                cout << i + 1 << "." << cliente[i].getNombre() << "\n";
+                            }
+                            cout << ">> ";
+                            cin >> opTemp;
+                            opTemp--;
+                            do
+                            {
+                                cout << cliente[opTemp];
+                                cout << "8. Eliminar datos\n"
+                                        "9. Regresar \n";
+                                cout << ">> ";
+                                cin >> op;
+                                switch (op)
+                                {
+
+                                    case 1:
+                                        cout << "Ingerese nuevo nombre: ";
+                                        cin >> modOp;
+                                        cliente[opTemp].setNombre(modOp);
+                                        break;
+
+                                    case 2:
+                                        cout << "Ingerese nuevo apellido: ";
+                                        cin >> modOp;
+                                        cliente[opTemp].setApellido(modOp);
+                                        break;
+
+                                    case 3:
+                                        cout << "Ingerese nuevo tipo de documento (C.C, C.I T.I): ";
+                                        cin >> modOp;
+                                        cliente[opTemp].setTipo_identificacion(modOp);
+                                        break;
+
+                                    case 4:
+                                        cout << "Ingerese nuevo documento: ";
+                                        cin >> intModOp;
+                                        cliente[opTemp].setDocumento(intModOp);
+                                        break;
+
+                                    case 5:
+                                        cout << "Ingerese nueva direccion: ";
+                                        cin.ignore();
+                                        getline(cin, modOp);
+                                        cliente[opTemp].setDireccion(modOp);
+                                        break;
+
+                                    case 6:
+                                        cout << "Ingerese nuevo tipo de suscripcion (Personal, Grupal, Empresarial: ";
+                                        cin >> modOp;
+                                        cliente[opTemp].setTipo_suscripcion(modOp);
+                                        break;
+
+                                    case 7:
+                                        cout << "Ingerese nuevo descuento: ";
+                                        cin >> intModOp;
+                                        cliente[opTemp].setDescuento(intModOp);
+                                        break;
+
+                                    case 8:
+                                        cliente[opTemp]=Cliente();
+                                        i_cliente=opTemp;
+                                        rep = false;
+                                        break;
+
+                                    case 9:
+                                        rep = false;
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            } while (rep == true);
+                            rep = true;
                             break;
 
                         case 3:
-                            cout << "Ingerese nuevo tipo de documento (C.C, C.I T.I): ";
-                            cin >> modOp;
-                            cliente[opTemp].setTipo_identificacion(modOp);
+                            for (int i = 0; i < 2; i++)
+                            {
+                                cout << i + 1 << "." << cliente[i].getNombre() << "\n";
+                            }
+                            cout << ">> ";
+                            cin >> op;
+                            cout << cliente[op - 1];
+                            system("pause");
                             break;
 
                         case 4:
-                            cout << "Ingerese nuevo documento: ";
-                            cin >> intModOp;
-                            cliente[opTemp].setDocumento(intModOp);
-                            break;
-
-                        case 5:
-                            cout << "Ingerese nueva direccion: ";
-                            cin.ignore();
-                            getline(cin, modOp);
-                            cliente[opTemp].setDireccion(modOp);
-                            break;
-
-                        case 6:
-                            cout << "Ingerese nuevo tipo de suscripcion (Personal, Grupal, Empresarial: ";
-                            cin >> modOp;
-                            cliente[opTemp].setTipo_suscripcion(modOp);
-                            break;
-
-                        case 7:
-                            cout << "Ingerese nuevo descuento: ";
-                            cin >> intModOp;
-                            cliente[opTemp].setDescuento(intModOp);
-                            break;
-
-                        case 8:
-                            rep = false;
-                            break;
-
-                        default:
-                            break;
-                        }
-                    } while (rep == true);
-                    rep = true;
-                    break;
-
-                case 3:
-                    for (int i = 0; i < 2; i++)
-                    {
-                        cout << i + 1 << "." << cliente[i].getNombre() << "\n";
-                    }
-                    cout << ">> ";
-                    cin >> op;
-                    cout << cliente[op - 1];
-                    system("pause");
-                    break;
-
-                case 4:
-                    for (int i = 0; i < 2; i++)
-                    {
-                        cout << i + 1 << "." << cliente[i].getNombre() << "\n";
-                    }
-                    cout << ">> ";
-                    cin >> op;
-                    cout << "Villavicencio                     Factrura  #00" << op << endl;
-                    cout << "Km via Acacias, anillo vial \n"
-                            "(8) 6823030 / Cel: 3103689660 \n"
-                            "-----------------------------------------------------\n\n"
-                            "FACTURA A \n"
-                         << cliente[op - 1].getNombre() << " " << cliente[op - 1].getApellido() << "\n"
-                         << cliente[op - 1].getTipo_identificacion() << ": " << cliente[op - 1].getDocumento()
-                         << "\n"
-                         << "Direccion: " << cliente[op - 1].getDireccion() << "\n \n \n"
-                         << "DESCRIPCION                 |  CANT |   VALOR\n"
-                            "Pago de suscripcion "
-                         << cliente[op - 1].getTipo_suscripcion()
-                         << " |   1   |  $" << cliente[op - 1].calcularPagosuscripcion() << " COP\n"
-                         << "                            TOTAL     $"
-                         << cliente[op - 1].calcularPagosuscripcion() << " COP \n\n\n"
-                         << "VALOR A PAGAR  $" << cliente[op - 1].calcularPagosuscripcion() << " COP\n\n"
-                         << "            GRACIAS POR TU COMPRA\n"
-                            "    Feliz mes te desea la familia unillanos\n\n";
-                    system("pause");
-                    break;
-                case 5:
-                    rep = false;
-                    break;
-                default:
-                    break;
-                }
-                break;
-            case 2:
-
-                cout << "################################################\n"
-                        "###   Sistema de planificacion de recursos   ###\n"
-                        "################################################\n \n"
-                        "Gestion de Empleados \n"
-                        "Menu: \n"
-                        "1. Crear empleados \n"
-                        "2. Modificar empleados \n"
-                        "3. Ver empleados \n"
-                        "4. Generar recibos de nómina \n"
-                        "5. Regresar \n \n"
-                        "¿Que desea realizar? \n"
-                        ">> ";
-                cin >> op;
-                switch (op)
-                {
-                case 1:
-                    while (i_empleado < 2)
-                    {
-                        cin >> empleado[i_empleado];
-                        i_empleado++;
-                        break;
-                    }
-                    break;
-                case 2:
-                    for (int i = 0; i < 2; i++)
-                    {
-                        cout << i + 1 << "." << empleado[i].getNombre() << endl;
-                    }
-                    cout << ">> ";
-                    cin >> opTemp;
-                    opTemp -= 1;
-                    do
-                    {
-                        cout << empleado[opTemp];
-                        cout << "12. Regresar\n"
-                             << ">> ";
-                        cin >> op;
-                        switch (op)
-                        {
-                        case 1:
-                            cout << "Nuevo Nombre: ";
-                            cin >> modOp;
-                            empleado[opTemp].setNombre(modOp);
-                            break;
-                        case 2:
-                            cout << "Nuevo Apellido: ";
-                            cin >> modOp;
-                            empleado[opTemp].setApellido(modOp);
-                            break;
-                        case 3:
-                            cout << "Nuevo Tipo de Identificación: ";
-                            cin >> modOp;
-                            empleado[opTemp].setTipo_identificacion(modOp);
-                            break;
-                        case 4:
-                            cout << "Nuevo Número de Documento: ";
-                            cin >> intModOp;
-                            empleado[opTemp].setDocumento(intModOp);
+                            for (int i = 0; i < 2; i++)
+                            {
+                                cout << i + 1 << "." << cliente[i].getNombre() << "\n";
+                            }
+                            cout << ">> ";
+                            cin >> op;
+                            cout << "Villavicencio                     Factrura  #00" << op << endl;
+                            cout << "Km via Acacias, anillo vial \n"
+                                    "(8) 6823030 / Cel: 3103689660 \n"
+                                    "-----------------------------------------------------\n\n"
+                                    "FACTURA A \n"
+                                 << cliente[op - 1].getNombre() << " " << cliente[op - 1].getApellido() << "\n"
+                                 << cliente[op - 1].getTipo_identificacion() << ": " << cliente[op - 1].getDocumento()
+                                 << "\n"
+                                 << "Direccion: " << cliente[op - 1].getDireccion() << "\n \n \n"
+                                 << "DESCRIPCION                 |  CANT |   VALOR\n"
+                                    "Pago de suscripcion "
+                                 << cliente[op - 1].getTipo_suscripcion()
+                                 << " |   1   |  $" << cliente[op - 1].calcularPagosuscripcion() << " COP\n"
+                                 << "                            TOTAL     $"
+                                 << cliente[op - 1].calcularPagosuscripcion() << " COP \n\n\n"
+                                 << "VALOR A PAGAR  $" << cliente[op - 1].calcularPagosuscripcion() << " COP\n\n"
+                                 << "            GRACIAS POR TU COMPRA\n"
+                                    "    Feliz mes te desea la familia unillanos\n\n";
+                            system("pause");
                             break;
                         case 5:
-                            cout << "Nuevo Tipo de Contrato: ";
-                            cin >> modOp;
-                            empleado[opTemp].setTipoContrato(modOp);
-                            break;
-                        case 6:
-                            cout << "Horas Extra Diurnas: ";
-                            cin >> intModOp;
-                            empleado[opTemp].setHorasExtraD(intModOp);
-                            break;
-                        case 7:
-                            cout << "Horas Extra Nocturnas: ";
-                            cin >> intModOp;
-                            empleado[opTemp].setHorasExtraN(intModOp);
-                            break;
-                        case 8:
-                            cout << "Horas Extra Dominicales Diurnas: ";
-                            cin >> intModOp;
-                            empleado[opTemp].setHorasExtraDomD(intModOp);
-                            break;
-                        case 9:
-                            cout << "Horas Extra Dominicales Nocturnas: ";
-                            cin >> intModOp;
-                            empleado[opTemp].setHorasExtraDomN(intModOp);
-                            break;
-                        case 10:
                             rep = false;
                             break;
                         default:
                             break;
-                        }
-                    } while (rep == true);
-                    rep = true;
+                    }
+                    break;
+                case 2:
+
+                    cout << "################################################\n"
+                            "###   Sistema de planificacion de recursos   ###\n"
+                            "################################################\n \n"
+                            "Gestion de Empleados \n"
+                            "Menu: \n"
+                            "1. Crear empleados \n"
+                            "2. Modificar empleados \n"
+                            "3. Ver empleados \n"
+                            "4. Generar recibos de nómina \n"
+                            "5. Regresar \n \n"
+                            "¿Que desea realizar? \n"
+                            ">> ";
+                    cin >> op;
+                    switch (op)
+                    {
+                        case 1:
+                            while (i_empleado < 2)
+                            {
+                                cin >> empleado[i_empleado];
+                                i_empleado++;
+                                break;
+                            }
+                            break;
+                        case 2:
+                            for (int i = 0; i < 2; i++)
+                            {
+                                cout << i + 1 << "." << empleado[i].getNombre() << endl;
+                            }
+                            cout << ">> ";
+                            cin >> opTemp;
+                            opTemp -= 1;
+                            do
+                            {
+                                cout << empleado[opTemp];
+                                cout << "12. Eliminar datos\n"
+                                        "13. Regresar\n"
+                                     << ">> ";
+                                cin >> op;
+                                switch (op)
+                                {
+                                    case 1:
+                                        cout << "Nuevo Nombre: ";
+                                        cin >> modOp;
+                                        empleado[opTemp].setNombre(modOp);
+                                        break;
+                                    case 2:
+                                        cout << "Nuevo Apellido: ";
+                                        cin >> modOp;
+                                        empleado[opTemp].setApellido(modOp);
+                                        break;
+                                    case 3:
+                                        cout << "Nuevo Tipo de Identificación: ";
+                                        cin >> modOp;
+                                        empleado[opTemp].setTipo_identificacion(modOp);
+                                        break;
+                                    case 4:
+                                        cout << "Nuevo Número de Documento: ";
+                                        cin >> intModOp;
+                                        empleado[opTemp].setDocumento(intModOp);
+                                        break;
+                                    case 5:
+                                        cout << "Nuevo Tipo de Contrato: ";
+                                        cin >> modOp;
+                                        empleado[opTemp].setTipoContrato(modOp);
+                                        break;
+                                    case 6:
+                                        cout << "Horas Extra Diurnas: ";
+                                        cin >> intModOp;
+                                        empleado[opTemp].setHorasExtraD(intModOp);
+                                        break;
+                                    case 7:
+                                        cout << "Horas Extra Nocturnas: ";
+                                        cin >> intModOp;
+                                        empleado[opTemp].setHorasExtraN(intModOp);
+                                        break;
+                                    case 8:
+                                        cout << "Horas Extra Dominicales Diurnas: ";
+                                        cin >> intModOp;
+                                        empleado[opTemp].setHorasExtraDomD(intModOp);
+                                        break;
+                                    case 9:
+                                        cout << "Horas Extra Dominicales Nocturnas: ";
+                                        cin >> intModOp;
+                                        empleado[opTemp].setHorasExtraDomN(intModOp);
+                                        break;
+                                    case 10:
+                                        empleado[opTemp]=Empleado();
+                                        i_empleado=opTemp;
+                                        rep = false;
+                                        break;
+                                    case 11:
+                                        rep = false;
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            } while (rep == true);
+                            rep = true;
+                            break;
+                        case 3:
+                            for (int i = 0; i < 2; i++)
+                            {
+                                cout << i + 1 << "." << empleado[i].getNombre() << endl;
+                            }
+                            cout << ">> ";
+                            cin >> op;
+                            cout << empleado[op - 1];
+                            system("read -p 'Presiona Enter... ' var");
+                            break;
+                        case 4:
+                            system("clear");
+                            for (int i = 0; i < 2; i++)
+                            {
+                                cout << i + 1 << "." << empleado[i].getNombre() << endl;
+                            }
+                            cout << ">> ";
+                            cin >> op;
+                            op -= 1;
+                            floatModOp = empleado[op].calcularSalario();
+                            cout << "\t\tDESPRENDIBLE DE PAGO\n\n"
+                                 << "Aunar Villavicencio\t\t DESPRENDIBLE\t #0001\n"
+                                 << "\t\t\t\t FECHA\t 27/11/2019\n\n"
+                                 << "Km1 Vía Acacías, Anillo Vial\n"
+                                 << "Villavicencio, Meta\n"
+                                 << "(8) 6823030 / Cel: 3103689660\n"
+                                 << "--------------------------------------------------------\n\n"
+                                 << "SALARIO\t\t" << empleado[op].getSalario() << "\n"
+                                 << "TIPO CONTRATO\t" << empleado[op].getTipoContrato() << "\n"
+                                 << empleado[op].getNombre() << "\n"
+                                 << empleado[op].getTipo_identificacion() << " " << empleado[op].getDocumento() << "\n\n"
+                                 << setw(10) << "DESCRIPCIÓN" << setw(20) << "|" << setw(10) << "CANT" << setw(5) << "|" << setw(10) << "VALOR\n"
+                                 << setw(10) << "Pago nómina" << setw(20) << "|" << setw(10) << empleado[op].getHoraT() << setw(5) << "|" << setw(4) << "$" << fixed << setprecision(1) << hora_o * empleado[op].getHoraT() << "COP\n"
+                                 << setw(10) << "Horas extras diurnas" << setw(11) << "|" << setw(10) << empleado[op].getHorasExtraD() << setw(5) << "|" << setw(5) << "$" << (hora_o * 1.25) * empleado[op].getHorasExtraD() << "COP\n"
+                                 << setw(10) << "Horas extras nocturnas" << setw(9) << "|" << setw(10) << empleado[op].getHorasExtraN() << setw(5) << "|" << setw(5) << "$" << (hora_o * 1.75) * empleado[op].getHorasExtraN() << "COP\n"
+                                 << setw(10) << "Horas extras dirunas dom" << setw(7) << "|" << setw(10) << empleado[op].getHorasExtraDomD() << setw(5) << "|" << setw(5) << "$" << (hora_o * 2) * empleado[op].getHorasExtraDomD() << "COP\n"
+                                 << setw(10) << "Horas extras nocturnas dom" << setw(5) << "|" << setw(10) << empleado[op].getHorasExtraDomN() << setw(5) << "|" << setw(5) << "$" << (hora_o * 2.5) * empleado[op].getHorasExtraDomN() << "COP\n\n"
+                                 << setw(41) << "TOTAL" << setw(5) << "|" << setw(10) << "$" << floatModOp << "COP\n\n\n"
+                                 << "VALOR A PAGAR: $" << floatModOp << " COP\n\n"
+                                 << "\t Gracias por trabajar con nosotros\n"
+                                 << "\tFeliz Año te desea la familia AUNAR\n\n"
+                                 << "--------------------------------------------------------\n\n";
+                            break;
+                        case 5:
+                            rep = false;
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case 3:
-                    for (int i = 0; i < 2; i++)
-                    {
-                        cout << i + 1 << "." << empleado[i].getNombre() << endl;
-                    }
-                    cout << ">> ";
-                    cin >> op;
-                    cout << empleado[op - 1];
-                    system("read -p 'Presiona Enter... ' var");
-                    break;
-                case 4:
-                    system("clear");
-                    for (int i = 0; i < 2; i++)
-                    {
-                        cout << i + 1 << "." << empleado[i].getNombre() << endl;
-                    }
-                    cout << ">> ";
-                    cin >> op;
-                    op -= 1;
-                    floatModOp = empleado[op].calcularSalario();
-                    cout << "\t\tDESPRENDIBLE DE PAGO\n\n"
-                         << "Aunar Villavicencio\t\t DESPRENDIBLE\t #0001\n"
-                         << "\t\t\t\t FECHA\t 27/11/2019\n\n"
-                         << "Km1 Vía Acacías, Anillo Vial\n"
-                         << "Villavicencio, Meta\n"
-                         << "(8) 6823030 / Cel: 3103689660\n"
-                         << "--------------------------------------------------------\n\n"
-                         << "SALARIO\t\t" << empleado[op].getSalario() << "\n"
-                         << "TIPO CONTRATO\t" << empleado[op].getTipoContrato() << "\n"
-                         << empleado[op].getNombre() << "\n"
-                         << empleado[op].getTipo_identificacion() << " " << empleado[op].getDocumento() << "\n\n"
-                         << setw(10) << "DESCRIPCIÓN" << setw(20) << "|" << setw(10) << "CANT" << setw(5) << "|" << setw(10) << "VALOR\n"
-                         << setw(10) << "Pago nómina" << setw(20) << "|" << setw(10) << empleado[op].getHoraT() << setw(5) << "|" << setw(4) << "$" << fixed << setprecision(1) << hora_o * empleado[op].getHoraT() << "COP\n"
-                         << setw(10) << "Horas extras diurnas" << setw(11) << "|" << setw(10) << empleado[op].getHorasExtraD() << setw(5) << "|" << setw(5) << "$" << (hora_o * 1.25) * empleado[op].getHorasExtraD() << "COP\n"
-                         << setw(10) << "Horas extras nocturnas" << setw(9) << "|" << setw(10) << empleado[op].getHorasExtraN() << setw(5) << "|" << setw(5) << "$" << (hora_o * 1.75) * empleado[op].getHorasExtraN() << "COP\n"
-                         << setw(10) << "Horas extras dirunas dom" << setw(7) << "|" << setw(10) << empleado[op].getHorasExtraDomD() << setw(5) << "|" << setw(5) << "$" << (hora_o * 2) * empleado[op].getHorasExtraDomD() << "COP\n"
-                         << setw(10) << "Horas extras nocturnas dom" << setw(5) << "|" << setw(10) << empleado[op].getHorasExtraDomN() << setw(5) << "|" << setw(5) << "$" << (hora_o * 2.5) * empleado[op].getHorasExtraDomN() << "COP\n\n"
-                         << setw(41) << "TOTAL" << setw(5) << "|" << setw(10) << "$" << floatModOp << "COP\n\n\n"
-                         << "VALOR A PAGAR: $" << floatModOp << " COP\n\n"
-                         << "\t Gracias por trabajar con nosotros\n"
-                         << "\tFeliz Año te desea la familia AUNAR\n\n"
-                         << "--------------------------------------------------------\n\n";
-                    break;
-                case 5:
                     rep = false;
                     break;
                 default:
                     break;
-                }
-                break;
-            case 3:
-                rep = false;
-                break;
-            default:
-                break;
             }
         } while (rep == true);
-        rep = true;
     } while (rep == true);
     return 0;
 }
